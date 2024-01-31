@@ -9,4 +9,13 @@ pipeline {
             }
         }
     }
+    stage('Production') {
+    steps {
+        script {
+            docker.image('node:latest').inside {
+                sh 'npm run build'
+            }
+        }
+    }
+}
 }
