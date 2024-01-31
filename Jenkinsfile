@@ -1,12 +1,7 @@
-pipeline {
-    agent {
-        docker { image 'node:latest' }
-    }
-    stages {
+node {
+    docker.image('node:latest').inside {
         stage('Установка зависимостей') {
-            steps {
-                sh 'npm install'
-            }
+            sh 'npm install'
         }
     }
 }
