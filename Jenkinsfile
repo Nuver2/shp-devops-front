@@ -13,5 +13,11 @@ pipeline {
                 sh 'npm run build:production'
             }
         }
+         stage('на production') {
+            steps {
+                sh "scp -r dist/* user@production_server:${env.SERVER_PROJECT_PATH}" 
+            }
+        }
     }
 }
+
