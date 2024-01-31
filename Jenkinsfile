@@ -8,14 +8,10 @@ pipeline {
                 sh 'npm install'
             }
         }
-    }
-    stage('Production') {
-    steps {
-        script {
-            docker.image('node:latest').inside {
-                sh 'npm run build'
+        stage('production') {
+            steps {
+                sh 'npm run build:production'
             }
         }
     }
-}
 }
