@@ -1,13 +1,11 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'node:latest' }
+    }
     stages {
-        stage('Install Dependencies') {
+        stage('Установка зависимостей') {
             steps {
-                script {
-                    docker.image('node:latest').inside {
-                        sh 'npm install'
-                    }
-                }
+                sh 'npm install'
             }
         }
     }
